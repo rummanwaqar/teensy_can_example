@@ -23,6 +23,7 @@ void loop() {
     Serial.print(msg.buf[i]); Serial.print(" ");
   }
   Serial.println("");
+  CANTransmitter.write(msg);
   digitalWrite(led, !digitalRead(led));
   delay(500);
 }
