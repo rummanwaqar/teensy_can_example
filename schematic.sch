@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="7.3.0">
+<eagle version="8.4.2">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
+<setting keepoldvectorfont="yes"/>
 <setting verticaltext="up"/>
 </settings>
 <grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
@@ -1088,8 +1089,8 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 <part name="GND1" library="supply1" deviceset="GND" device=""/>
 <part name="GND2" library="supply1" deviceset="GND" device=""/>
 <part name="GND3" library="supply1" deviceset="GND" device=""/>
-<part name="GND4" library="supply1" deviceset="GND" device=""/>
 <part name="P+1" library="supply1" deviceset="+5V" device=""/>
+<part name="GND4" library="supply1" deviceset="GND" device=""/>
 <part name="P+2" library="supply1" deviceset="+5V" device=""/>
 </parts>
 <sheets>
@@ -1110,10 +1111,10 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 <instance part="R4" gate="G$1" x="76.2" y="73.66" rot="R90"/>
 <instance part="GND1" gate="1" x="76.2" y="81.28" rot="R180"/>
 <instance part="GND2" gate="1" x="104.14" y="81.28" rot="R180"/>
-<instance part="GND3" gate="1" x="43.18" y="60.96" rot="R270"/>
-<instance part="GND4" gate="1" x="137.16" y="60.96" rot="R90"/>
-<instance part="P+1" gate="1" x="38.1" y="63.5" rot="MR270"/>
-<instance part="P+2" gate="1" x="142.24" y="63.5" rot="R270"/>
+<instance part="GND3" gate="1" x="38.1" y="60.96"/>
+<instance part="P+1" gate="1" x="43.18" y="71.12"/>
+<instance part="GND4" gate="1" x="142.24" y="60.96"/>
+<instance part="P+2" gate="1" x="139.7" y="71.12"/>
 </instances>
 <busses>
 </busses>
@@ -1157,14 +1158,6 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 </net>
 <net name="GND" class="0">
 <segment>
-<pinref part="GND3" gate="1" pin="GND"/>
-<pinref part="U1" gate="MCP2551" pin="VDD"/>
-</segment>
-<segment>
-<pinref part="GND4" gate="1" pin="GND"/>
-<pinref part="U2" gate="MCP2551" pin="VDD"/>
-</segment>
-<segment>
 <pinref part="GND1" gate="1" pin="GND"/>
 <pinref part="R4" gate="G$1" pin="2"/>
 </segment>
@@ -1172,17 +1165,29 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 <pinref part="GND2" gate="1" pin="GND"/>
 <pinref part="R3" gate="G$1" pin="2"/>
 </segment>
-</net>
-<net name="+5V" class="0">
 <segment>
 <pinref part="U1" gate="MCP2551" pin="VSS"/>
-<pinref part="P+1" gate="1" pin="+5V"/>
-<wire x1="45.72" y1="63.5" x2="40.64" y2="63.5" width="0.1524" layer="91"/>
+<pinref part="GND3" gate="1" pin="GND"/>
+<wire x1="38.1" y1="63.5" x2="45.72" y2="63.5" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="U2" gate="MCP2551" pin="VSS"/>
+<pinref part="GND4" gate="1" pin="GND"/>
+<wire x1="142.24" y1="63.5" x2="134.62" y2="63.5" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="+5V" class="0">
+<segment>
 <pinref part="P+2" gate="1" pin="+5V"/>
-<wire x1="134.62" y1="63.5" x2="139.7" y2="63.5" width="0.1524" layer="91"/>
+<wire x1="139.7" y1="68.58" x2="139.7" y2="60.96" width="0.1524" layer="91"/>
+<pinref part="U2" gate="MCP2551" pin="VDD"/>
+<wire x1="139.7" y1="60.96" x2="134.62" y2="60.96" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="U1" gate="MCP2551" pin="VDD"/>
+<pinref part="P+1" gate="1" pin="+5V"/>
+<wire x1="45.72" y1="60.96" x2="43.18" y2="60.96" width="0.1524" layer="91"/>
+<wire x1="43.18" y1="60.96" x2="43.18" y2="68.58" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$4" class="0">
